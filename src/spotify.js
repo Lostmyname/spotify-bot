@@ -2,9 +2,20 @@
 
 import SpotifyWebApi from 'spotify-web-api-node';
 
-// credentials are optional
-const spotifyApi = new SpotifyWebApi();
-spotifyApi.setAccessToken(process.env.SPOTIFY_ACCESS_TOKEN);
+const spotifyApi = new SpotifyWebApi({
+	redirectUri: 'http://macr.ae/',
+	clientId: process.env.SPOTIFY_CLIENT_ID,
+	clientSecret: process.env.SPOTIFY_CLIENT_SECRET
+});
+
+spotifyApi.authorizationCodeGrant(process.env.SPOTIFY_ACCESS_TOKEN)
+		.then(function(data) {
+			spotifyApi.setAccessToken(data.body['access_token']);
+			spotifyApi.setRefreshToken(data.body['refresh_token']);
+		})
+		.catch(function (err) {
+			console.error('Spotify broke:', err);
+		});
 
 /**
  * Adds an array of tracks to a playlist.
