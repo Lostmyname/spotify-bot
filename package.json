@@ -1,0 +1,16 @@
+{
+  "name": "spotify-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Callum Macrae <callum@macr.ae>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.1.4",
+    "dotenv": "^1.2.0",
+    "spotify-web-api-node": "^2.1.0"
+  }
+}
