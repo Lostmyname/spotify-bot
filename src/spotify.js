@@ -29,7 +29,7 @@ export function getTracks(rawUri) {
 
 	if (uri.playlist) {
 		return spotifyApi.getPlaylistTracks(uri.user, uri.playlist)
-				.then(getTracks);
+			.then(getTracks);
 	} else if (uri.album) {
 		return spotifyApi.getAlbumTracks(uri.album)
 			.then(getTracks);
